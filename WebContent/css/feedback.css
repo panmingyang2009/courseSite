@@ -1,0 +1,12 @@
+.feedback-title{
+	width: 50%;
+}
+.feedback-content{
+	width: 50%;
+	resize: none;
+}
+.feedback-btn{
+	position: absolute;
+	text-align: center;
+	left: 25%;
+}

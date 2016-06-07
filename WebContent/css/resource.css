@@ -1,0 +1,12 @@
+.resource-list{
+	list-style: none;
+	line-height: 55px;
+	font-size: 20px;
+}
+.new-label{
+	margin-left: 10px;
+}
+.resource-date{
+	margin-left: 50px;
+	font-size: 15px;
+}

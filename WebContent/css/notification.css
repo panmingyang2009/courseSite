@@ -1,0 +1,27 @@
+.notification{
+	list-style: none;
+	line-height: 55px;
+	font-size: 20px;
+}
+.notification li a{
+	color: black;
+}
+.notification li a:hover{
+	text-decoration: none;
+	color: rgb(45,111,174);
+}
+.notification-content{
+	font-size: 20px;
+	text-align: left;
+	margin-left: 200px;
+	margin-right: 200px;
+}
+.notification-title{
+	text-align: center;
+}
+.notification-detail{
+	margin-top: 100px;
+}
+.back-btn{
+	float: left;
+}

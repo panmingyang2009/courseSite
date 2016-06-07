@@ -1,0 +1,8 @@
+.nav ul li{
+	list-style: none;
+}
+.sidebar{
+	position: fixed;
+	height: 100%;
+	background-color: rgb(242,242,242);
+}

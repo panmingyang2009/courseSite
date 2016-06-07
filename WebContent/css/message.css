@@ -1,0 +1,32 @@
+#leave_message{
+	margin-top: 80px;
+}
+.leave_title{
+	width: 50%;
+}
+.leave_content{
+	width: 50%;
+	resize: none;
+}
+.leave_button{
+	text-align: center;
+}
+.message_list{
+	list-style: none;
+}
+.message_title{
+	font-size: 25px;
+}
+.message_content{
+	font-size: 20px;
+}
+.message_reply{
+	font-size: 15px;
+}
+.reply_text{
+	display: inline;
+	width: 200px;
+}
+.reply-btn{
+	margin-left: 10px;
+}

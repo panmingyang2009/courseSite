@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value=","></constant>
+	<!-- 上传文件最大限制（如果为多文件上传，则为多个文件的总大小） -->
+	<constant name="struts.multipart.maxSize" value="40000000"></constant>
+	<!-- 存放上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="D:\\temp"></constant>
+
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mystack" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+	</package>
+
+	<!-- 学生相关 -->
+	<package name="student" namespace="/student" extends="struts-default">
+
+		<action name="*Action" class="studentAction" method="{1}">
+			<result name="modifyPsw">/student/modifyPsw.jsp</result>
+			<result name="showStudentInfo">/student/showStudentInfo.jsp</result>
+			<result name="modifyStudentInfo">/student/modifyStudentInfo.jsp</result>
+			<result name="showScore">/student/showScore.jsp</result>
+			<result name="showExamInfo">/student/showExamInfo.jsp</result>
+			<result name="showAssignment">/student/showAssignment.jsp</result>
+			<result name="uploadHomework">/student/uploadHomework.jsp</result>
+			<result name="showCourseware">/student/showCourseware.jsp</result>
+			<result name="success">index.jsp</result>
+			<result name="error">/student/error.jsp</result>
+		</action>
+		<action name="*" class="studentAction" method="{1}">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="showNotices">/showNotices.jsp</result>
+			<result name="showNotice">/showNotice.jsp</result>
+		</action>
+	</package>
+
+	<!-- 资源相关 -->
+	<package name="resource" namespace="/resource" extends="struts-default">
+
+		<action name="upload*Action" class="resourceAction" method="upload{1}">
+			<!-- 文件拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 单个文件的大小 -->
+				<param name="maximumSize ">10000000</param>
+				<param name="allowedTypes">application/octet-stream,application/vnd.ms-powerpoint,application/msword</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="downloadAction" class="resourceAction">
+			<!-- 设置一个stream类型的result -->
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream,application/vnd.ms-powerpoint,application/msword</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">inputStream</param>
+				<param name="buffserSize">4096</param>
+			</result>
+		</action>
+
+		<action name="*Action" class="resourceAction" method="{1}">
+			<result name="showCoursewareList">/showCoursewareList.jsp</result>
+			<result name="showHomeworkList">/showHomeworkList.jsp</result>
+		</action>
+	</package>
+
+	<!-- 老师相关 -->
+	<package name="teacher" namespace="/teacher" extends="struts-default">
+		<action name="*Action" class="teacherAction" method="{1}">
+			<result name="modifyPsw">/teacher/modifyPsw.jsp</result>
+			<result name="showteacherInfo">/teacher/showteacherInfo.jsp</result>
+			<result name="modifyteacherInfo">/teacher/showTeacherInfo.jsp</result>
+			<result name="inputScore">/teacher/inputScore.jsp</result>
+			<result name="showStudentInfo">/teacher/showStudentInfo.jsp</result>
+			<result name="showExamInfo">/teacher/showExamInfo.jsp</result>
+			<result name="showAssignment">/teacher/showAssignment.jsp</result>
+			<result name="showCourseware">/teacher/showCourseware.jsp</result>
+			<result name="showHomework">/teacher/showHomework.jsp</result>
+			<result name="success">index.jsp</result>
+			<result name="error">/teacher/error.jsp</result>
+		</action>
+
+		<action name="*" class="teacherAction" method="{1}">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="showNotices">/showNotices.jsp</result>
+			<result name="showNotice">/showNotice.jsp</result>
+		</action>
+	</package>
+
+	<package name="BBS" namespace="/BBS" extends="struts-default">
+		<action name="*Action"
+			class="edu.fzu.softwareengineer.courseSite.action.SiteBBSAction"
+			method="{1}">
+			<result name="success">/BBS/showCurPage.jsp</result>
+			<result name="error">/BBS/error.jsp</result>
+		</action>
+	</package>
+
+	<package name="test" namespace="/test" extends="struts-default">
+		<action name="*Test"
+			class="edu.fzu.softwareengineer.courseSite.action.TestAction" method="{1}">
+			<result name="success">/showTest.jsp</result>
+			<result name="showScore">/showScore.jsp</result>
+		</action>
+	</package>
+
+
+</struts>

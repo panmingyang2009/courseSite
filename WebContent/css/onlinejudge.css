@@ -1,0 +1,12 @@
+.judge-list{
+	list-style: none;
+	line-height: 55px;
+	font-size: 20px;
+}
+.judge{
+}
+.submit-btn{
+	margin-top: 30px;
+	width: 50%;
+	margin-left: 25%;
+}

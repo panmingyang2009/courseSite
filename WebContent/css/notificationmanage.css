@@ -1,0 +1,13 @@
+.btns{
+	text-align: right;
+}
+.btn{
+	width: 100px;
+	height: 35px;
+}
+td a{
+	color: #333333;
+}
+td a:hover{
+	text-decoration: none;
+}
